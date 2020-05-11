@@ -28,6 +28,7 @@ var markercluster = require('./layers/MarkerCluster.js');
 var layergroup = require('./layers/LayerGroup.js');
 var featuregroup = require('./layers/FeatureGroup.js');
 var geojson = require('./layers/GeoJSON.js');
+var svgicon = require('./layers/SVGIcon.js');
 
 //Controls
 var attributioncontrol = require('./controls/AttributionControl.js')
@@ -103,6 +104,7 @@ module.exports = {
     LeafletMapView : map.LeafletMapView,
     LeafletLegendControlView : legendcontrol.LeafletLegendControlView,
     LeafletSearchControlView: searchcontrol.LeafletSearchControlView,
+    LeafletSVGIconView: svgicon.LeafletSVGIconView,
 
     // models
     LeafletLayerModel : layer.LeafletLayerModel,
@@ -146,4 +148,5 @@ module.exports = {
     LeafletMapStyleModel : map.LeafletMapStyleModel,
     LeafletLegendControlModel : legendcontrol.LeafletLegendControlModel,
     LeafletSearchControlModel: searchcontrol.LeafletSearchControlModel,
+    LeafletSVGIconModel: svgicon.LeafletSVGIconModel,
 };

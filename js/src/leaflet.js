@@ -12,6 +12,7 @@ require('leaflet-fullscreen');
 require('leaflet-transform');
 require('leaflet.awesome-markers');
 require('leaflet-search');
+require('leaflet-svgicon');
 
 // Monkey patch GridLayer for smoother URL updates
 L.patchGridLayer = function(layer) {

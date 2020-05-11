@@ -176,6 +176,21 @@ class AwesomeIcon(UILayer):
     spin = Bool(False).tag(sync=True)
 
 
+class SVGIcon(UILayer):
+    _view_name = Unicode("LeafletSVGIconView").tag(sync=True)
+    _model_name = Unicode("LeafletSVGIconModel").tag(sync=True)
+
+    color = Unicode("rgb(0,102,255)").tag(sync=True, o=True)
+    icon_size = List([32, 48]).tag(sync=True, o=True)
+    fill_color = Unicode().tag(sync=True, o=True)
+    fill_opacity = Float(0.4, min=0.0, max=1.0).tag(sync=True, o=True)
+    font_color = Unicode("rgb(0, 0, 0)").tag(sync=True, o=True)
+    font_size = List().tag(sync=True, o=True)
+    circle_text = Unicode("").tag(sync=True, o=True)
+    circle_anchor = List().tag(sync=True, o=True)
+    circle_color = Unicode("rgb(0,102,255)").tag(sync=True, o=True)
+
+
 class Marker(UILayer):
     _view_name = Unicode('LeafletMarkerView').tag(sync=True)
     _model_name = Unicode('LeafletMarkerModel').tag(sync=True)
@@ -183,8 +198,11 @@ class Marker(UILayer):
     location = List(def_loc).tag(sync=True)
     opacity = Float(1.0, min=0.0, max=1.0).tag(sync=True)
     visible = Bool(True).tag(sync=True)
-    icon = Union((Instance(Icon), Instance(AwesomeIcon)), allow_none=True, default_value=None).tag(sync=True,
-                                                                                                   **widget_serialization)
+    icon = Union(
+        (Instance(Icon), Instance(AwesomeIcon), Instance(SVGIcon)),
+        allow_none=True,
+        default_value=None,
+    ).tag(sync=True, **widget_serialization)
 
     # Options
     z_index_offset = Int(0).tag(sync=True, o=True)
