@@ -42,6 +42,7 @@ export * from './controls/ZoomControl.js';
 export * from './controls/ScaleControl.js';
 export * from './controls/LegendControl.js';
 export * from './controls/SearchControl.js';
+export * from './controls/PanelControl.js';
 
 //Map
 export * from './Map.js';
@@ -58,3 +59,4 @@ require('leaflet.awesome-markers/dist/leaflet.awesome-markers.css');
 require('spin.js/spin.css');
 require('./jupyter-leaflet.css');
 require('leaflet-search/dist/leaflet-search.src.css');
+require('leaflet-panel-layers/dist/leaflet-panel-layers.src.css');

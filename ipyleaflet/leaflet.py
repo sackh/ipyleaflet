@@ -1516,6 +1516,18 @@ class SearchControl(Control):
     marker = Instance(Marker).tag(sync=True, **widget_serialization)
 
 
+class PanelControl(Control):
+    """ Panel Control Widget """
+    _view_name = Unicode('LeafletPanelControlView').tag(sync=True)
+    _model_name = Unicode('LeafletPanelControlModel').tag(sync=True)
+
+    collapsible_groups = Bool(False).tag(sync=True, o=True)
+    collapsed = Bool(False).tag(sync=True, o=True)
+
+    base_layers = List(Dict()).tag(sync=True, **widget_serialization)
+    overlays = List(Dict()).tag(sync=True, **widget_serialization)
+
+
 class MapStyle(Style, Widget):
     """ Map Style Widget """
     _model_name = Unicode('LeafletMapStyleModel').tag(sync=True)
