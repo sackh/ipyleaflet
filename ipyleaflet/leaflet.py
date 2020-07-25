@@ -798,6 +798,18 @@ class AntPath(VectorLayer):
     radius = Int(10).tag(sync=True, o=True)
 
 
+class TangramLayer(Layer):
+    """Tangram class.
+    Tangram Layer.
+    """
+
+    _view_name = Unicode('TangramView').tag(sync=True)
+    _model_name = Unicode('TangramModel').tag(sync=True)
+
+    scene = Unicode('').tag(sync=True, o=True)
+    attribution = Unicode('').tag(sync=True, o=True)
+
+
 class Polyline(Path):
     """Polyline abstract class.
 
