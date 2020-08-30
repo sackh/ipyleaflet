@@ -874,6 +874,8 @@ class CircleMarker(Path):
         Location of the marker (lat, long).
     radius: int, default 10
         Radius of the circle marker in pixels.
+    draggable: boolean, default True
+        Whether the marker is draggable with the mouse or not.
     """
 
     _view_name = Unicode('LeafletCircleMarkerView').tag(sync=True)
@@ -883,6 +885,7 @@ class CircleMarker(Path):
 
     # Options
     radius = Int(10, help='radius of circle in pixels').tag(sync=True, o=True)
+    draggable = Bool(True).tag(sync=True, o=True)
 
 
 class Circle(CircleMarker):
