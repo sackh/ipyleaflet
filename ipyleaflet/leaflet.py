@@ -887,6 +887,28 @@ class CircleMarker(Path):
     radius = Int(10, help='radius of circle in pixels').tag(sync=True, o=True)
     draggable = Bool(True).tag(sync=True, o=True)
 
+    _move_callbacks = Instance(CallbackDispatcher, ())
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.on_msg(self._handle_leaflet_event)
+
+    def _handle_leaflet_event(self, _, content, buffers):
+        if content.get('event', '') == 'move':
+            self._move_callbacks(**content)
+
+    def on_move(self, callback, remove=False):
+        """Add a move event listener.
+
+        Parameters
+        ----------
+        callback : callable
+            Callback function that will be called on move event.
+        remove: boolean
+            Whether to remove this callback or not. Defaults to False.
+        """
+        self._move_callbacks.register_callback(callback, remove=remove)
+
 
 class Circle(CircleMarker):
     """Circle class.

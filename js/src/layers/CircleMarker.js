@@ -22,18 +22,25 @@ export class LeafletCircleMarkerView extends path.LeafletPathView {
   create_obj() {
     this.obj = L.circleMarker(this.model.get('location'), this.get_options());
     var draggable = this.model.get("draggable");
+    var self = this;
     if (draggable) {
       this.obj.on({
       mousedown: function () {
-        map.on('mousemove', function (e) {
-          this.obj.setLatLng(e.latlng);
+        self.map_view.obj.on('mousemove', function (e) {
+          self.obj.setLatLng(e.latlng);
         });
       }
     });
     this.map_view.obj.on('mouseup',function(e){
-      this.map_view.obj.removeEventListener('mousemove');
+      self.map_view.obj.removeEventListener('mousemove');
     })
     }
+//    this.obj.on('dragend', event => {
+//      var marker = event.target;
+//      var position = marker.getLatLng();
+//      this.model.set('location', [position.lat, position.lng]);
+//      this.touch();
+//    });
   }
 
   model_events() {
@@ -43,6 +50,10 @@ export class LeafletCircleMarkerView extends path.LeafletPathView {
       'change:location',
       function() {
         this.obj.setLatLng(this.model.get('location'));
+        this.send({
+          event: 'move',
+          location: this.model.get('location')
+        });
       },
       this
     );
