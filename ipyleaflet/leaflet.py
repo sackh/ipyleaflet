@@ -1902,6 +1902,16 @@ class SearchControl(Control):
         self._feature_found_callbacks.register_callback(callback, remove=remove)
 
 
+class SelectControl(Control):
+    """SelectControl Widget."""
+    _view_name = Unicode('LeafletSelectControlView').tag(sync=True)
+    _model_name = Unicode('LeafletSelectControlModel').tag(sync=True)
+
+    shift_key = Bool(False).tag(sync=True)
+    ctrl_key = Bool(True).tag(sync=True)
+    auto_disable = Bool(False).tag(sync=True)
+
+
 class MapStyle(Style, Widget):
     """Map Style Widget
 
